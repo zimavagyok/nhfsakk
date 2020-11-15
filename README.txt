@@ -1,0 +1,1 @@
+Az assets mappát a bin/Debugba kell másolni, mivel ekkor működik helyesen a program. Egyébként szeretnék segítséget kérni hogy, hogyan kell realatív útvonallal megadni innen az asset mappát a main.c-vel egy szinten.
