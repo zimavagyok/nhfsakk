@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "../debugmalloc.h"
 
 tempBoard *CopyChessBoard(const ChessBoard *oldCb)
 {

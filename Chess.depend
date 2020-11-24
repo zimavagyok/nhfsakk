@@ -1,0 +1,521 @@
+# depslib dependency file v1.0
+1606154977 source:c:\users\csizm\desktop\c\nhf\chess\main.c
+	<SDL2/SDL2_gfxPrimitives.h>
+	"Model/Entity.h"
+	"View/Display.h"
+	"Init/Initialize.h"
+	"Control/chess.h"
+	"game.h"
+	<math.h>
+	"menu.h"
+	<stdlib.h>
+	<unistd.h>
+	"debugmalloc.h"
+
+1518375510 c:\program files\codeblocks\mingw\include\sdl2\sdl2_gfxprimitives.h
+	<math.h>
+	"SDL.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\begin_code.h
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\close_code.h
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_metal.h
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1583890769 c:\program files\codeblocks\mingw\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1606159263 source:c:\users\csizm\desktop\c\nhf\chess\game.c
+	"Model/Entity.h"
+	"View/Display.h"
+	"Init/Initialize.h"
+	"Control/chess.h"
+	"Control/FileOperations.h"
+	"Model/Entity.h"
+	"Model/ChessPieceList.h"
+	"Model/Moves.h"
+	"main.h"
+	"Extensions/checkFunctions.h"
+	<stdbool.h>
+	"debugmalloc.h"
+
+1606135557 source:c:\users\csizm\desktop\c\nhf\chess\extensions\checkfunctions.c
+	"../Model/Entity.h"
+	<SDL2/SDL.h>
+
+1606145725 c:\users\csizm\desktop\c\nhf\chess\model\entity.h
+	"SDL2/SDL.h"
+	<stdbool.h>
+
+1606158197 source:c:\users\csizm\desktop\c\nhf\chess\model\chessboard.c
+	"Entity.h"
+	"../debugmalloc.h"
+
+1606158197 source:c:\users\csizm\desktop\c\nhf\chess\model\moves.c
+	"Entity.h"
+	"../debugmalloc.h"
+
+1606158196 source:c:\users\csizm\desktop\c\nhf\chess\view\display.c
+	"../Model/Entity.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_render.h>
+	<SDL2/SDL_ttf.h>
+	"../debugmalloc.h"
+
+1606132839 c:\users\csizm\desktop\c\nhf\chess\init\initialize.h
+	"SDL2/SDL.h"
+	"../Model/Entity.h"
+
+1606158197 source:c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.c
+	"../Init/Initialize.h"
+	"../main.h"
+	<SDL2/SDL_image.h>
+	"../debugmalloc.h"
+
+1561866798 c:\program files\codeblocks\mingw\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1606158174 source:c:\users\csizm\desktop\c\nhf\chess\control\chess.c
+	"../Model/Entity.h"
+	"../Model/ChessBoard.h"
+	"../Init/Initialize.h"
+	"../Model/Moves.h"
+	"../Extensions/checkFunctions.h"
+	"../Model/ChessPieceList.h"
+	"../debugmalloc.h"
+
+1605445828 c:\users\csizm\desktop\c\nhf\chess\model\chessboard.h
+
+1606142683 c:\users\csizm\desktop\c\nhf\chess\extensions\checkfunctions.h
+
+1605382819 c:\users\csizm\desktop\c\nhf\chess\main.h
+
+1606206557 source:c:\users\csizm\desktop\c\nhf\chess\init\initialize.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	"../main.h"
+	"../Model/Entity.h"
+	"../Model/ChessPieceList.h"
+	<stdio.h>
+	"../debugmalloc.h"
+
+1606154849 c:\users\csizm\desktop\c\nhf\chess\view\display.h
+	"../Model/Entity.h"
+
+1606154299 c:\users\csizm\desktop\c\nhf\chess\control\chess.h
+
+1606145510 c:\users\csizm\desktop\c\nhf\chess\model\moves.h
+
+1547322290 c:\program files\codeblocks\mingw\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1606154713 c:\users\csizm\desktop\c\nhf\chess\control\fileoperations.h
+
+1606206288 source:c:\users\csizm\desktop\c\nhf\chess\control\fileoperations.c
+	"../Model/Entity.h"
+	"../Model/Moves.h"
+	<time.h>
+	<stdio.h>
+	<string.h>
+	"../debugmalloc.h"
+
+1606205936 source:c:\users\csizm\desktop\c\nhf\chess\replay.c
+	"Init/Initialize.h"
+	"Control/FileOperations.h"
+	"View/Display.h"
+	"Extensions/checkFunctions.h"
+	"Control/chess.h"
+	"Model/Moves.h"
+	"Model/ChessPieceList.h"
+	"main.h"
+	"debugmalloc.h"
+
+1606132882 c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.h
+
+1605983437 c:\users\csizm\desktop\c\nhf\chess\game.h
+
+1606158100 source:c:\users\csizm\desktop\c\nhf\chess\menu.c
+	"View/Display.h"
+	"main.h"
+	"loadMenu.h"
+	"Model/Entity.h"
+	"Extensions/checkFunctions.h"
+	"game.h"
+	"debugmalloc.h"
+
+1606132419 c:\users\csizm\desktop\c\nhf\chess\menu.h
+
+1606158105 source:c:\users\csizm\desktop\c\nhf\chess\loadmenu.c
+	"View/Display.h"
+	"Extensions/checkFunctions.h"
+	"replay.h"
+	"game.h"
+	"main.h"
+	"debugmalloc.h"
+
+1606154268 c:\users\csizm\desktop\c\nhf\chess\replay.h
+
+1606140656 c:\users\csizm\desktop\c\nhf\chess\loadmenu.h
+
+1604506959 c:\users\csizm\desktop\c\nhf\chess\debugmalloc.h
+	<stdbool.h>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdarg.h>
+	<process.h>
+	<unistd.h>
+

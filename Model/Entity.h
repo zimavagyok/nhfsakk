@@ -20,6 +20,11 @@ typedef struct ChessPiece{
 /*typedef struct ChessPieceList{
     ChessPiece *current,*next;
 } ChessPieceList;*/
+typedef struct Text{
+    int x,y,fontSize;
+    SDL_Color color;
+} Text;
+
 typedef struct Coordinate
 {
     int Rank, File;
@@ -35,6 +40,7 @@ typedef struct ChessBoard{
     Square square[8][8];
     ChessPiece *first;
     Color next;
+    bool loaded;
 } ChessBoard;
 
 typedef struct tempSquare{
@@ -50,9 +56,18 @@ typedef struct tempBoard{
 } tempBoard;
 
 typedef struct Move{
-    int File,Rank;
-    Square toSquare;
+    Coordinate from, to;
+    struct Move *nextMove;
 } Move;
+
+typedef struct Movement{
+    Coordinate from,to;
+} Movement;
+
+typedef struct Replay{
+    int movementCount;
+    Movement *movement;
+} Replay;
 
 typedef struct Moves{
     int moveCount;

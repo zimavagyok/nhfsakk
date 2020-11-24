@@ -1,4 +1,5 @@
 #include "../Model/Entity.h"
+#include <SDL2/SDL.h>
 
 bool insideBoarders(const Coordinate nextCoord)
 {
@@ -22,5 +23,10 @@ bool squareEmpty(const Coordinate coord,const ChessBoard *board)
 bool compareCoordinates(const Coordinate first,const Coordinate second)
 {
     return first.Rank == second.Rank && first.File == second.File ? true : false;
+}
+
+bool pointInRectangle(SDL_Point point, int x1, int y1, int x2, int y2)
+{
+    return point.x >= x1 && point.y >= y1 && point.x <= x2 && point.y <= y2 ? true : false;
 }
 

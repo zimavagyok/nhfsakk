@@ -3,6 +3,29 @@
 #include "../Init/Initialize.h"
 #include "../Model/Moves.h"
 #include "../Extensions/checkFunctions.h"
+#include "../Model/ChessPieceList.h"
+#include "../debugmalloc.h"
+
+void doMoveReplay(const Movement replayMove, ChessBoard *cb)
+{
+    if(cb->square[replayMove.to.Rank][replayMove.to.File].Piece == NULL)
+    {
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece = cb->square[replayMove.from.Rank][replayMove.from.File].Piece;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->image_position = cb->square[replayMove.to.Rank][replayMove.to.File].squarePos;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->Rank = replayMove.to.Rank;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->File = replayMove.to.File;
+        cb->square[replayMove.from.Rank][replayMove.from.File].Piece = NULL;
+    }
+    else
+    {
+        cb->first = RemovePiece(cb->first,cb->square[replayMove.to.Rank][replayMove.to.File].Piece);
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece = cb->square[replayMove.from.Rank][replayMove.from.File].Piece;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->image_position = cb->square[replayMove.to.Rank][replayMove.to.File].squarePos;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->Rank = replayMove.to.Rank;
+        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->File = replayMove.to.File;
+        cb->square[replayMove.from.Rank][replayMove.from.File].Piece = NULL;
+    }
+}
 
 tempBoard *doMoveTemp(const Coordinate from, const Coordinate to, tempBoard *tb)
 {
@@ -210,7 +233,7 @@ void LegalMoves(const Coordinate from,const ChessBoard *cb, Moves *move)
                     addMove(&legal,to);
                 }
             }
-            if(current.Rank+2 < MAX_ROW && cb->square[current.Rank+2][current.File].Piece == NULL && current.Rank == 1)
+            if(current.Rank+2 < MAX_ROW && cb->square[current.Rank+2][current.File].Piece == NULL && current.Rank == 1 && cb->square[current.Rank+1][current.File].Piece == NULL)
             {
                 Coordinate to = {.Rank = current.Rank+2,.File = current.File};
                 if(!checkCheck(from,to,cb))
@@ -245,7 +268,7 @@ void LegalMoves(const Coordinate from,const ChessBoard *cb, Moves *move)
                     addMove(&legal,to);
                 }
             }
-            if(current.Rank-2 >= 0 && cb->square[current.Rank-2][current.File].Piece == NULL && current.Rank == 6)
+            if(current.Rank-2 >= 0 && cb->square[current.Rank-2][current.File].Piece == NULL && current.Rank == 6 && cb->square[current.Rank-1][current.File].Piece == NULL)
             {
                 Coordinate to = {.Rank = current.Rank-2,.File = current.File};
                 if(!checkCheck(from,to,cb))
@@ -331,12 +354,13 @@ void LegalMoves(const Coordinate from,const ChessBoard *cb, Moves *move)
         }
         break;
     case QUEEN:;
-        stop = false;
         int index[] = {1,-1};
 
         //VERTIVAL & HORIZONTAL
         for(int i = 0;i<2;i++)
         {
+            stop = false;
+            //int queenRank = current.Rank + index[i];
             for(int j = current.Rank + index[i];j<MAX_ROW && j>=0 && !stop ;j+=index[i])
             {
                 Coordinate to = {.Rank = j,.File=current.File};
@@ -435,6 +459,10 @@ bool doMove(const Coordinate from,const Coordinate to, ChessBoard *cb)
         cb->square[to.Rank][to.File].Piece->Rank = to.Rank;
         cb->square[to.Rank][to.File].Piece->File = to.File;
         cb->square[from.Rank][from.File].Piece = NULL;
+    }
+    if((to.Rank == 0 || to.Rank == 7) && cb->square[to.Rank][to.File].Piece->type == PAWN)
+    {
+        UpgradePawn(cb,to);
     }
     freeMoves(&allMoves);
     return true;

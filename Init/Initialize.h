@@ -4,5 +4,6 @@
 #define INIT_H
 void sdl_initialize();
 SDL_Rect initPosByFileRank(int Rank, int File);
+ChessBoard *initChessBoardFromFile(char *file);
 ChessBoard *initChessBoard();
 #endif
