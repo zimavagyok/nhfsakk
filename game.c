@@ -25,57 +25,25 @@ void game(bool loadFromFile, char *file)
     }
     drawGame(cb,renderer);
 
-    bool drag = false,game = true;
+    bool game = true, moveHappened = false;
     Square *selected = NULL;
     Coordinate from;
-    SDL_Point mousePos,clickOffset;
+    SDL_Point mousePos;
     SDL_Event ev;
-    Move *first = NULL;
+    Move *movesInGame = NULL;
     while (SDL_WaitEvent(&ev) && ev.type != SDL_QUIT && game) {
             switch(ev.type)
             {
             case SDL_MOUSEBUTTONDOWN:
                 mousePos.x = ev.motion.x;
                 mousePos.y = ev.motion.y;
-                for(int i = 0;i<MAX_ROW;i++)
-                {
-                    for(int j = 0;j<MAX_COL;j++)
-                    {
-                        if(SDL_PointInRect(&mousePos,&cb->square[i][j].squarePos) && cb->square[i][j].Piece != NULL && cb->square[i][j].Piece->color == cb->next)
-                        {
-                            selected = &cb->square[i][j];
-                            from.Rank = i;
-                            from.File = j;
-                            clickOffset.x = mousePos.x - cb->square[i][j].squarePos.x;
-                            clickOffset.y = mousePos.y - cb->square[i][j].squarePos.y;
-                            drag = true;
-                            break;
-                        }
-                    }
-                }
-                //20,436,100,486
                 if(pointInRectangle(mousePos,20,436,100,486))
                 {
                     game = false;
-                    WriteToFile(first,cb,false);
+                    if(moveHappened)
+                        WriteToFile(movesInGame,cb,false);
                 }
-                break;
-            case SDL_MOUSEMOTION:
-                mousePos.x = ev.motion.x;
-                mousePos.y = ev.motion.y;
-                if(drag == true && selected != NULL)
-                {
-                    if(mousePos.y>415)
-                    {
-                        mousePos.y = 415;
-                    }
-                    selected->Piece->image_position.x = mousePos.x - clickOffset.x;
-                    selected->Piece->image_position.y = mousePos.y - clickOffset.y;
-                    drawGame(cb,renderer);
-                }
-                break;
-            case SDL_MOUSEBUTTONUP:
-                if(drag == true && selected != NULL)
+                if(selected != NULL)
                 {
                     for(int i = 0;i<MAX_ROW;i++)
                     {
@@ -86,7 +54,8 @@ void game(bool loadFromFile, char *file)
                                 Coordinate to = {.Rank = i,.File = j};
                                 if((cb->square[i][j].Rank != selected->Rank || selected->File != to.File) && doMove(from,to,cb))
                                 {
-                                    first = addMoveToHistory(first,from,to);
+                                    moveHappened = true;
+                                    movesInGame = addMoveToHistory(movesInGame,from,to);
                                     cb->next = cb->next == WHITE ? BLACK : WHITE;
                                     SDL_RenderClear(renderer);
                                     if(checkCheckMate(cb))
@@ -94,13 +63,12 @@ void game(bool loadFromFile, char *file)
                                         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"WIN",cb->next==WHITE? "Black wins!" : "White wins!",window);
                                         game = false;
                                         if(!cb->loaded)
-                                            WriteToFile(first,cb,true);
+                                            WriteToFile(movesInGame,cb,true);
                                         break;
                                     }
                                 }
                                 else
                                 {
-                                    selected->Piece->image_position = selected->squarePos;
                                     drawGame(cb,renderer);
                                 }
                                 drawGame(cb,renderer);
@@ -108,20 +76,46 @@ void game(bool loadFromFile, char *file)
                             }
                         }
                     }
+                    selected = NULL;
                 }
-                drag = false;
-                selected = NULL;
+                else if(selected==NULL)
+                {
+                    for(int i = 0;i<MAX_ROW;i++)
+                    {
+                        for(int j = 0;j<MAX_COL;j++)
+                        {
+                            if(SDL_PointInRect(&mousePos,&cb->square[i][j].squarePos) && cb->square[i][j].Piece != NULL && cb->square[i][j].Piece->color == cb->next)
+                            {
+                                selected = &cb->square[i][j];
+                                from.Rank = i;
+                                from.File = j;
+                                Moves availableMoves;
+                                LegalMoves(from,cb,&availableMoves);
+                                if(availableMoves.coordinates != NULL)
+                                {
+                                    showAvailableMoves(renderer,availableMoves);
+                                    freeMoves(&availableMoves);
+                                }
+                                else
+                                    selected = NULL;
+
+                                break;
+                            }
+                        }
+                    }
+                }
                 break;
             case SDL_KEYDOWN:
                 switch (ev.key.keysym.sym) {
                     case SDLK_ESCAPE:
                         game = false;
-                        WriteToFile(first,cb,false);
+                        if(moveHappened)
+                            WriteToFile(movesInGame,cb,false);
                 }
                 break;
             }
     }
 
     FreePieces(cb->first);
-    free(cb);
+    freeChessBoard(cb);
 }

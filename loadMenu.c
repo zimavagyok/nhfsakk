@@ -7,7 +7,7 @@
 
 void loadMenu()
 {
-    drawLoadMenu(renderer);
+    drawLoadMenu(renderer,false);
 
     char* fileDir = NULL;
     SDL_Event ev;
@@ -28,7 +28,7 @@ void loadMenu()
                     else
                     {
                         game(true,fileDir);
-                        drawLoadMenu(renderer);
+                        drawLoadMenu(renderer,fileDir == NULL ? false : true);
                     }
                 }
                 else if(pointInRectangle(mousePos,130,200,286,250))
@@ -40,7 +40,7 @@ void loadMenu()
                     else
                     {
                         replay(fileDir);
-                        drawLoadMenu(renderer);
+                        drawLoadMenu(renderer,fileDir == NULL ? false : true);
                     }
                 }
                 else if(pointInRectangle(mousePos,130,270,286,320))
@@ -50,6 +50,7 @@ void loadMenu()
                 break;
             case (SDL_DROPFILE):
                 fileDir = ev.drop.file;
+                drawLoadMenu(renderer,fileDir == NULL ? false : true);
                 break;
             }
     }

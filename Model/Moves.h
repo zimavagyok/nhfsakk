@@ -3,6 +3,7 @@
 void freeMoves(Moves *list);
 void addMove(Moves *list, Coordinate newValue);
 void freeMoveHistory(Move *first);
+void freeMovement(Replay *element);
 Move *addMoveToHistory(Move *first,const Coordinate from,const Coordinate to);
 void addMoveToMovement(Replay *list, Movement newValue);
 #endif // MOVES_H

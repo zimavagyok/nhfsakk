@@ -5,6 +5,7 @@
 #include "Control/chess.h"
 #include "Model/Moves.h"
 #include "Model/ChessPieceList.h"
+#include "Model/ChessBoard.h"
 #include "main.h"
 #include "debugmalloc.h"
 
@@ -17,7 +18,7 @@ void replay(char *filePath)
     {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"Error","Wrong format!",window);
         FreePieces(cb->first);
-        free(cb);
+        freeChessBoard(cb);
         return;
     }
     drawReplay(cb,renderer);
@@ -48,7 +49,7 @@ void replay(char *filePath)
                 {
                     freeMovement(&replayMoves);
                     FreePieces(cb->first);
-                    free(cb);
+                    freeChessBoard(cb);
                     cb = initChessBoard();
                     replayMoves = (Replay){.movementCount = 0,.movement = NULL};
                     int ret = loadMovesFromFile(&replayMoves,filePath);
@@ -64,7 +65,7 @@ void replay(char *filePath)
                 {
                     freeMovement(&replayMoves);
                     FreePieces(cb->first);
-                    free(cb);
+                    freeChessBoard(cb);
                     return;
                 }
                 break;

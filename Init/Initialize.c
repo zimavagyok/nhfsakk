@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_image.h>
 #include "../main.h"
 #include "../Model/Entity.h"
 #include "../Model/ChessPieceList.h"
@@ -38,7 +39,6 @@ ChessBoard *initChessBoard()
     {
         for(int j = 0;j<MAX_COL;j++)
         {
-            //board->square[i][j] = (Square*)malloc(sizeof(Square));
             board->square[i][j].Rank = i;
             board->square[i][j].File = j;
             board->square[i][j].Piece = NULL;
@@ -46,55 +46,50 @@ ChessBoard *initChessBoard()
         }
     }
     board->loaded = false;
+    board->board = IMG_LoadTexture(renderer,"assets/images/chessBoard.png");
     ChessPiece *first = NULL;
 
     //WHITE
+    first = AppendPiece(first,PAWN,WHITE);
     for(int j = 0;j<8;j++)
     {
-        first = AppendPiece(first,1,j,PAWN,WHITE);
         board->square[1][j].Piece = first;
     }
 
-    first=AppendPiece(first,0,0,ROOK,WHITE);
+    first=AppendPiece(first,ROOK,WHITE);
     board->square[0][0].Piece = first;
-    first=AppendPiece(first,0,1,KNIGHT,WHITE);
-    board->square[0][1].Piece = first;
-    first=AppendPiece(first,0,2,BISHOP,WHITE);
-    board->square[0][2].Piece = first;
-    first=AppendPiece(first,0,3,KING,WHITE);
-    board->square[0][3].Piece = first;
-    first=AppendPiece(first,0,4,QUEEN,WHITE);
-    board->square[0][4].Piece = first;
-    first=AppendPiece(first,0,7,ROOK,WHITE);
     board->square[0][7].Piece = first;
-    first=AppendPiece(first,0,6,KNIGHT,WHITE);
+    first=AppendPiece(first,KNIGHT,WHITE);
+    board->square[0][1].Piece = first;
     board->square[0][6].Piece = first;
-    first=AppendPiece(first,0,5,BISHOP,WHITE);
+    first=AppendPiece(first,BISHOP,WHITE);
+    board->square[0][2].Piece = first;
     board->square[0][5].Piece = first;
+    first=AppendPiece(first,KING,WHITE);
+    board->square[0][3].Piece = first;
+    first=AppendPiece(first,QUEEN,WHITE);
+    board->square[0][4].Piece = first;
 
     //BLACK
+    first = AppendPiece(first,PAWN,BLACK);
     for(int j = 0;j<8;j++)
     {
-        first = AppendPiece(first,6,j,PAWN,BLACK);
         board->square[6][j].Piece = first;
     }
 
-    first=AppendPiece(first,7,0,ROOK,BLACK);
+    first=AppendPiece(first,ROOK,BLACK);
     board->square[7][0].Piece = first;
-    first=AppendPiece(first,7,1,KNIGHT,BLACK);
-    board->square[7][1].Piece = first;
-    first=AppendPiece(first,7,2,BISHOP,BLACK);
-    board->square[7][2].Piece = first;
-    first=AppendPiece(first,7,3,KING,BLACK);
-    board->square[7][3].Piece = first;
-    first=AppendPiece(first,7,4,QUEEN,BLACK);
-    board->square[7][4].Piece = first;
-    first=AppendPiece(first,7,7,ROOK,BLACK);
     board->square[7][7].Piece = first;
-    first=AppendPiece(first,7,6,KNIGHT,BLACK);
+    first=AppendPiece(first,KNIGHT,BLACK);
+    board->square[7][1].Piece = first;
     board->square[7][6].Piece = first;
-    first=AppendPiece(first,7,5,BISHOP,BLACK);
+    first=AppendPiece(first,BISHOP,BLACK);
+    board->square[7][2].Piece = first;
     board->square[7][5].Piece = first;
+    first=AppendPiece(first,KING,BLACK);
+    board->square[7][3].Piece = first;
+    first=AppendPiece(first,QUEEN,BLACK);
+    board->square[7][4].Piece = first;
 
     board->first = first;
     board->next = WHITE;
@@ -117,6 +112,7 @@ ChessBoard *initChessBoardFromFile(char *file)
         }
     }
     board->loaded = true;
+    board->board = IMG_LoadTexture(renderer,"assets/images/chessBoard.png");
     ChessPiece *first = NULL;
 
     FILE *fp = fopen(file,"r");
@@ -144,10 +140,24 @@ ChessBoard *initChessBoardFromFile(char *file)
             fscanf(fp,"%d:%d[ ]",&colorNum,&typeNum);
             if(colorNum != 9)
             {
+                bool exists = false;
                 PieceType type = (PieceType)typeNum;
                 Color color = (PieceType)colorNum;
-                first = AppendPiece(first,i,j,type,color);
-                board->square[i][j].Piece = first;
+                ChessPiece *moving = first;
+                while(moving!=NULL && !exists)
+                {
+                    if(moving->type == type && moving->color == color)
+                    {
+                        exists = true;
+                        board->square[i][j].Piece = moving;
+                    }
+                    moving = moving->next;
+                }
+                if(!exists)
+                {
+                    first = AppendPiece(first,type,color);
+                    board->square[i][j].Piece = first;
+                }
             }
         }
     }

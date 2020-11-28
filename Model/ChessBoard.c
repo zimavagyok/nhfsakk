@@ -27,3 +27,9 @@ tempBoard *CopyChessBoard(const ChessBoard *oldCb)
 
     return newCb;
 }
+
+void freeChessBoard(ChessBoard *cb)
+{
+    SDL_DestroyTexture(cb->board);
+    free(cb);
+}

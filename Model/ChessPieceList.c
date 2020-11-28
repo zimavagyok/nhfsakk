@@ -3,40 +3,10 @@
 #include <SDL2/SDL_image.h>
 #include "../debugmalloc.h"
 
-void UpgradePawn(ChessBoard *cb, const Coordinate where)
-{
-    SDL_DestroyTexture(cb->square[where.Rank][where.File].Piece->image);
-    cb->square[where.Rank][where.File].Piece->image = IMG_LoadTexture(renderer,cb->square[where.Rank][where.File].Piece->color==WHITE ? "assets/images/WQueen.png" : "assets/images/BQueen.png");
-    cb->square[where.Rank][where.File].Piece->type = QUEEN;
-}
-
-/*ChessPiece *AppendPiece(ChessPiece *first,const int Rank,const int File,const PieceType type,const Color color,const char *fn)
+ChessPiece *AppendPiece(ChessPiece *first,const PieceType type,const Color color)
 {
     ChessPiece *newPiece = malloc(sizeof(ChessPiece));
-    newPiece->alive = true;
     newPiece->color = color;
-    newPiece->Rank = Rank;
-    newPiece->File = File;
-    newPiece->image_position = initPosByFileRank(Rank,File);
-    newPiece->image = IMG_LoadTexture(renderer,fn);
-    newPiece->type = type;
-    if(first == NULL)
-    {
-        newPiece->next = NULL;
-    }
-    else
-        newPiece->next = first;
-    return newPiece;
-}*/
-
-ChessPiece *AppendPiece(ChessPiece *first,const int Rank,const int File,const PieceType type,const Color color)
-{
-    ChessPiece *newPiece = malloc(sizeof(ChessPiece));
-    newPiece->alive = true;
-    newPiece->color = color;
-    newPiece->Rank = Rank;
-    newPiece->File = File;
-    newPiece->image_position = initPosByFileRank(Rank,File);
     switch(type)
     {
     case PAWN:
@@ -94,6 +64,25 @@ ChessPiece *AppendPiece(ChessPiece *first,const int Rank,const int File,const Pi
     return newPiece;
 }
 
+void UpgradePawn(ChessBoard *cb, const Coordinate where)
+{
+    bool found = false;
+    ChessPiece *moving = cb->first;
+    while(moving!=NULL && !found)
+    {
+        if(moving->color == cb->square[where.Rank][where.File].Piece->color && moving->type == QUEEN)
+        {
+            cb->square[where.Rank][where.File].Piece = moving;
+        }
+        moving = moving->next;
+    }
+    if(!found)
+    {
+        cb->first = AppendPiece(cb->first,QUEEN,cb->square[where.Rank][where.File].Piece->color);
+        cb->square[where.Rank][where.File].Piece = cb->first;
+    }
+}
+
 void FreePieces(ChessPiece *First)
 {
     ChessPiece *current = First, *next;
@@ -103,35 +92,5 @@ void FreePieces(ChessPiece *First)
         next = current->next;
         free(current);
         current = next;
-    }
-}
-
-ChessPiece *RemovePiece(ChessPiece *First, ChessPiece *which)
-{
-    ChessPiece *behind = NULL;
-    ChessPiece *moving = First;
-    while(moving != NULL && !SDL_RectEquals(&moving->image_position,&which->image_position))
-    {
-        behind = moving;
-        moving = moving->next;
-    }
-
-    if(moving==NULL)
-    {
-        return First;
-    }
-    else if(behind == NULL)
-    {
-        ChessPiece *newFirst = moving->next;
-        SDL_DestroyTexture(moving->image);
-        free(moving);
-        return newFirst;
-    }
-    else
-    {
-        behind->next = moving->next;
-        SDL_DestroyTexture(moving->image);
-        free(moving);
-        return First;
     }
 }

@@ -11,18 +11,11 @@ void doMoveReplay(const Movement replayMove, ChessBoard *cb)
     if(cb->square[replayMove.to.Rank][replayMove.to.File].Piece == NULL)
     {
         cb->square[replayMove.to.Rank][replayMove.to.File].Piece = cb->square[replayMove.from.Rank][replayMove.from.File].Piece;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->image_position = cb->square[replayMove.to.Rank][replayMove.to.File].squarePos;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->Rank = replayMove.to.Rank;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->File = replayMove.to.File;
         cb->square[replayMove.from.Rank][replayMove.from.File].Piece = NULL;
     }
     else
     {
-        cb->first = RemovePiece(cb->first,cb->square[replayMove.to.Rank][replayMove.to.File].Piece);
         cb->square[replayMove.to.Rank][replayMove.to.File].Piece = cb->square[replayMove.from.Rank][replayMove.from.File].Piece;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->image_position = cb->square[replayMove.to.Rank][replayMove.to.File].squarePos;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->Rank = replayMove.to.Rank;
-        cb->square[replayMove.to.Rank][replayMove.to.File].Piece->File = replayMove.to.File;
         cb->square[replayMove.from.Rank][replayMove.from.File].Piece = NULL;
     }
 }
@@ -438,7 +431,6 @@ bool doMove(const Coordinate from,const Coordinate to, ChessBoard *cb)
 
     if(!available)
     {
-        cb->square[from.Rank][from.File].Piece->image_position = cb->square[from.Rank][from.File].squarePos;
         freeMoves(&allMoves);
         return false;
     }
@@ -446,18 +438,11 @@ bool doMove(const Coordinate from,const Coordinate to, ChessBoard *cb)
     if(cb->square[to.Rank][to.File].Piece == NULL)
     {
         cb->square[to.Rank][to.File].Piece = cb->square[from.Rank][from.File].Piece;
-        cb->square[to.Rank][to.File].Piece->image_position = cb->square[to.Rank][to.File].squarePos;
-        cb->square[to.Rank][to.File].Piece->Rank = to.Rank;
-        cb->square[to.Rank][to.File].Piece->File = to.File;
         cb->square[from.Rank][from.File].Piece = NULL;
     }
     else
     {
-        cb->first = RemovePiece(cb->first,cb->square[to.Rank][to.File].Piece);
         cb->square[to.Rank][to.File].Piece = cb->square[from.Rank][from.File].Piece;
-        cb->square[to.Rank][to.File].Piece->image_position = cb->square[to.Rank][to.File].squarePos;
-        cb->square[to.Rank][to.File].Piece->Rank = to.Rank;
-        cb->square[to.Rank][to.File].Piece->File = to.File;
         cb->square[from.Rank][from.File].Piece = NULL;
     }
     if((to.Rank == 0 || to.Rank == 7) && cb->square[to.Rank][to.File].Piece->type == PAWN)
@@ -470,23 +455,24 @@ bool doMove(const Coordinate from,const Coordinate to, ChessBoard *cb)
 
 bool checkCheckMate(const ChessBoard *cb)
 {
-    ChessPiece *moving;
-
-    for(moving = cb->first;moving != NULL;moving = moving->next)
+    for(int i = 0;i<MAX_ROW;i++)
     {
-        if(moving->color == cb->next)
+        for(int j = 0;j<MAX_COL;j++)
         {
-            Coordinate from = {.Rank = moving->Rank,.File = moving->File};
-            Moves availableMoves;
-            availableMoves.moveCount = 0;
-            availableMoves.coordinates = NULL;
-            LegalMoves(from,cb,&availableMoves);
-            if(availableMoves.moveCount != 0)
+            if(cb->square[i][j].Piece != NULL && cb->square[i][j].Piece->color == cb->next)
             {
+                Coordinate from = {.Rank = i, .File = j};
+                Moves availableMoves;
+                availableMoves.moveCount = 0;
+                availableMoves.coordinates = NULL;
+                LegalMoves(from,cb,&availableMoves);
+                if(availableMoves.moveCount != 0)
+                {
+                    freeMoves(&availableMoves);
+                    return false;
+                }
                 freeMoves(&availableMoves);
-                return false;
             }
-            freeMoves(&availableMoves);
         }
     }
     return true;

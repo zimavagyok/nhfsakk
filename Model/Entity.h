@@ -4,14 +4,10 @@
 #define ENTITY_H
 typedef enum PieceType {PAWN,ROOK,KNIGHT,BISHOP,KING,QUEEN,NONE}PieceType;
 typedef enum Color {WHITE,BLACK} Color;
-typedef enum MoveType {Castling,Upgrade,Normal} MoveType;
 enum {SIZE = 52, MAX_COL = 8, MAX_ROW = 8};
 
 typedef struct ChessPiece{
-    int File, Rank;
-    bool alive;
     SDL_Texture *image;
-    SDL_Rect image_position;
     PieceType type;
     Color color;
     struct ChessPiece *next;
@@ -37,6 +33,7 @@ typedef struct Square{
 } Square;
 
 typedef struct ChessBoard{
+    SDL_Texture *board;
     Square square[8][8];
     ChessPiece *first;
     Color next;

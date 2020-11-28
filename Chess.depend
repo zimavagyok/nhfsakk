@@ -370,7 +370,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1606159263 source:c:\users\csizm\desktop\c\nhf\chess\game.c
+1606509571 source:c:\users\csizm\desktop\c\nhf\chess\game.c
 	"Model/Entity.h"
 	"View/Display.h"
 	"Init/Initialize.h"
@@ -388,11 +388,11 @@
 	"../Model/Entity.h"
 	<SDL2/SDL.h>
 
-1606145725 c:\users\csizm\desktop\c\nhf\chess\model\entity.h
+1606509428 c:\users\csizm\desktop\c\nhf\chess\model\entity.h
 	"SDL2/SDL.h"
 	<stdbool.h>
 
-1606158197 source:c:\users\csizm\desktop\c\nhf\chess\model\chessboard.c
+1606509541 source:c:\users\csizm\desktop\c\nhf\chess\model\chessboard.c
 	"Entity.h"
 	"../debugmalloc.h"
 
@@ -400,19 +400,20 @@
 	"Entity.h"
 	"../debugmalloc.h"
 
-1606158196 source:c:\users\csizm\desktop\c\nhf\chess\view\display.c
+1606510128 source:c:\users\csizm\desktop\c\nhf\chess\view\display.c
 	"../Model/Entity.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_render.h>
 	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_image.h>
 	"../debugmalloc.h"
 
 1606132839 c:\users\csizm\desktop\c\nhf\chess\init\initialize.h
 	"SDL2/SDL.h"
 	"../Model/Entity.h"
 
-1606158197 source:c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.c
+1606510519 source:c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.c
 	"../Init/Initialize.h"
 	"../main.h"
 	<SDL2/SDL_image.h>
@@ -424,7 +425,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1606158174 source:c:\users\csizm\desktop\c\nhf\chess\control\chess.c
+1606503946 source:c:\users\csizm\desktop\c\nhf\chess\control\chess.c
 	"../Model/Entity.h"
 	"../Model/ChessBoard.h"
 	"../Init/Initialize.h"
@@ -433,13 +434,13 @@
 	"../Model/ChessPieceList.h"
 	"../debugmalloc.h"
 
-1605445828 c:\users\csizm\desktop\c\nhf\chess\model\chessboard.h
+1606509559 c:\users\csizm\desktop\c\nhf\chess\model\chessboard.h
 
 1606142683 c:\users\csizm\desktop\c\nhf\chess\extensions\checkfunctions.h
 
 1605382819 c:\users\csizm\desktop\c\nhf\chess\main.h
 
-1606206557 source:c:\users\csizm\desktop\c\nhf\chess\init\initialize.c
+1606509470 source:c:\users\csizm\desktop\c\nhf\chess\init\initialize.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	"../main.h"
@@ -448,12 +449,12 @@
 	<stdio.h>
 	"../debugmalloc.h"
 
-1606154849 c:\users\csizm\desktop\c\nhf\chess\view\display.h
+1606582391 c:\users\csizm\desktop\c\nhf\chess\view\display.h
 	"../Model/Entity.h"
 
-1606154299 c:\users\csizm\desktop\c\nhf\chess\control\chess.h
+1606506881 c:\users\csizm\desktop\c\nhf\chess\control\chess.h
 
-1606145510 c:\users\csizm\desktop\c\nhf\chess\model\moves.h
+1606582395 c:\users\csizm\desktop\c\nhf\chess\model\moves.h
 
 1547322290 c:\program files\codeblocks\mingw\include\sdl2\sdl_ttf.h
 	"SDL.h"
@@ -470,7 +471,7 @@
 	<string.h>
 	"../debugmalloc.h"
 
-1606205936 source:c:\users\csizm\desktop\c\nhf\chess\replay.c
+1606509683 source:c:\users\csizm\desktop\c\nhf\chess\replay.c
 	"Init/Initialize.h"
 	"Control/FileOperations.h"
 	"View/Display.h"
@@ -478,10 +479,11 @@
 	"Control/chess.h"
 	"Model/Moves.h"
 	"Model/ChessPieceList.h"
+	"Model/ChessBoard.h"
 	"main.h"
 	"debugmalloc.h"
 
-1606132882 c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.h
+1606581281 c:\users\csizm\desktop\c\nhf\chess\model\chesspiecelist.h
 
 1605983437 c:\users\csizm\desktop\c\nhf\chess\game.h
 
@@ -496,7 +498,7 @@
 
 1606132419 c:\users\csizm\desktop\c\nhf\chess\menu.h
 
-1606158105 source:c:\users\csizm\desktop\c\nhf\chess\loadmenu.c
+1606509982 source:c:\users\csizm\desktop\c\nhf\chess\loadmenu.c
 	"View/Display.h"
 	"Extensions/checkFunctions.h"
 	"replay.h"
